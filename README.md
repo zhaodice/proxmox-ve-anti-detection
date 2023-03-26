@@ -142,7 +142,7 @@ Inject a line :
 	--enable-zstd
 ```
 
-6.
+6 current folder is `git's root path`.
 ```
 make clean
 make
