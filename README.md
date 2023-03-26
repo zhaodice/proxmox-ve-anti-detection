@@ -39,7 +39,7 @@ cd pve-qemu
 git reset --hard 93d558c1eef8f3ec76983cbe6848b0dc606ea5f1
 mk-build-deps --install
 wget "https://github.com/zhaodice/proxmox-ve-anti-detecion/raw/main/001-anti-detection.patch" -O qemu/001-anti-detection.patch
-
+```
 
 5.
 
