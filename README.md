@@ -1,6 +1,9 @@
+# Other Project
+For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
+
 # Proxmox VE(PVE) Anti Detecion
 A patch to hide pve itself, bypass mhyprot,Anti Cheat Expert(ACE),Easy Anti Cheat(EAC),nProtect GameGuard(NP) / VMProtect,~VProtect~(TEST FAILURE,IMMEDIATELY EXITED), Themida, Enigma Protector,Safegine Shielden
-For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
+
 
 # Build deb
 
