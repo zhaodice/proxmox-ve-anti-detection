@@ -42,10 +42,12 @@ wget "https://github.com/zhaodice/proxmox-ve-anti-detecion/raw/main/001-anti-det
 
 
 5.
-`nano debian/rules`
-FIND LINE:
-```
 
+`nano debian/rules`
+
+FIND LINE:
+
+```
 	# guest-agent is only required for guest systems
 	./configure \
 	--with-git-submodules=ignore \
@@ -92,6 +94,7 @@ FIND LINE:
 
 
 Inject a line :
+
 ```
   # Surprised Detector's Mother Fucker !!!
   patch -p1 < 001-anti-detection.patch
