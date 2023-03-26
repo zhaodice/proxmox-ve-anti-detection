@@ -1,7 +1,8 @@
 # Proxmox VE(PVE) Anti Detecion
 A patch to hide pve itself, bypass mhyprot,Anti Cheat Expert(ACE),Easy Anti Cheat(EAC),nProtect GameGuard(NP) / VMProtect,~VProtect~(TEST FAILURE,IMMEDIATELY EXITED), Themida, Enigma Protector,Safegine Shielden
+For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
 
-# Build deb:
+# Build deb
 
 !!! Create Proxmox VE Virtual Machine as compile enviromnet. !!!
 
@@ -161,9 +162,9 @@ Due to you edit the `rule` files to patch, so it cannot unapplying extra patch
 
 but it is NO PROBLME, because you will see a patched deb file "pve-qemu-kvm_7.2.0-8_amd64.deb" !
 
-# Install deb:
+# Install deb
 
-copy pve-qemu-kvm_7.2.0-8_amd64.deb into your real PVE system.(to use this deb , you should install librbd-dev=16.2.11-pve1 first)
+copy `pve-qemu-kvm_7.2.0-8_amd64.deb` into your real PVE system.(to use this deb , you should install `librbd-dev=16.2.11-pve1` first)
 ```
 apt install librbd-dev
 dpkg -i pve-qemu-kvm_7.2.0-8_amd64.deb
