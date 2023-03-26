@@ -161,7 +161,8 @@ Due to you edit the `rule` files to patch, so it cannot unapplying extra patch
 
 but it is NO PROBLME, because you will see a patched deb file "pve-qemu-kvm_7.2.0-8_amd64.deb" !
 
-8.
+# Install deb:
+
 copy pve-qemu-kvm_7.2.0-8_amd64.deb into your real PVE system.(to use this deb , you should install librbd-dev=16.2.11-pve1 first)
 ```
 apt install librbd-dev
