@@ -163,7 +163,7 @@ make: *** [Makefile:36: pve-qemu-kvm_7.2.0-8_amd64.deb] Error 25
 
 Due to you edit the `rule` files to patch, so it cannot unapplying extra patch
 
-but it is NO PROBLME, because you will see a patched deb file "pve-qemu-kvm_7.2.0-8_amd64.deb" !
+but it is NO PROBLME, because you will see a patched deb file `pve-qemu-kvm_7.2.0-8_amd64.deb` !
 
 # Install deb
 
