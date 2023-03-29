@@ -173,8 +173,9 @@ apt install librbd-dev
 dpkg -i pve-qemu-kvm_7.2.0-8_amd64.deb
 ```
 
-#VM Show
-``/etc/pve/qemu-server/100.conf`
+# VM Show
+
+`/etc/pve/qemu-server/100.conf`
 ```
 args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,kvm=off,hv_vendor_id=intel,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true,hypervisor=off -smbios type=0,version=UX305UA.201 -smbios type=1,manufacturer=ASUS,product=UX305UA,version=2021.1 -smbios type=2,manufacturer=Intel,version=2021.5,product='Intel i9-12900K' -smbios type=3,manufacturer=XBZJ -smbios type=17,manufacturer=KINGSTON,loc_pfx=DDR5,speed=4800,serial=114514,part=FF63 -smbios type=4,manufacturer=Intel,max-speed=4800,current-speed=4800
 audio0: device=ich9-intel-hda,driver=none
