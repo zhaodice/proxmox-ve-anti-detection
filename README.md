@@ -172,3 +172,35 @@ copy `pve-qemu-kvm_7.2.0-8_amd64.deb` into your real PVE system.(to use this deb
 apt install librbd-dev
 dpkg -i pve-qemu-kvm_7.2.0-8_amd64.deb
 ```
+
+#VM Show
+``/etc/pve/qemu-server/100.conf`
+```
+args: -cpu host,+kvm_pv_unhalt,+kvm_pv_eoi,hv_spinlocks=0x1fff,hv_vapic,hv_time,hv_reset,hv_vpindex,hv_runtime,hv_relaxed,kvm=off,hv_vendor_id=intel,vmware-cpuid-freq=false,enforce=false,host-phys-bits=true,hypervisor=off -smbios type=0,version=UX305UA.201 -smbios type=1,manufacturer=ASUS,product=UX305UA,version=2021.1 -smbios type=2,manufacturer=Intel,version=2021.5,product='Intel i9-12900K' -smbios type=3,manufacturer=XBZJ -smbios type=17,manufacturer=KINGSTON,loc_pfx=DDR5,speed=4800,serial=114514,part=FF63 -smbios type=4,manufacturer=Intel,max-speed=4800,current-speed=4800
+audio0: device=ich9-intel-hda,driver=none
+balloon: 0
+bios: ovmf
+boot: order=sata0
+cores: 12
+cpu: host,flags=+pcid
+efidisk0: local-lvm:vm-100-disk-0,efitype=4m,pre-enrolled-keys=1,size=4M
+hostpci0: 0000:01:00,pcie=1,x-vga=1
+machine: pc-q35-7.1
+memory: 32768
+meta: creation-qemu=7.1.0,ctime=1679627202
+name: Windows11
+net0: rtl8139=CA:09:F3:97:56:0B,bridge=vmbr0,firewall=1
+numa: 1
+ostype: win11
+sata0: HugeSSD:100/vm-100-disk-1.qcow2,discard=on,size=64G,ssd=1
+sata1: HugeHDD:100/vm-100-disk-0.qcow2,backup=0,size=128G
+smbios1: uuid=24c326dd-3cec-48fc-bb9f-87aa3984e2c9,manufacturer=QVNVUw==,product=VVgzMDVVQQ==,version=MjAyMS4x,serial=MTI0NjY3,sku=MTM0NDY4,family=Ng==,base64=1
+sockets: 1
+tpmstate0: local-lvm:vm-100-disk-1,size=4M,version=v2.0
+usb0: host=4e53:5406
+usb1: host=040b:2000
+vga: none
+vmgenid: 020229e3-2cdb-4a91-8e77-1d04cf1f060f
+```
+
+![Screenshot_20230329_124628](https://user-images.githubusercontent.com/63996691/228429821-443a3a9f-8d24-4712-9760-bbfb1f10aa8d.png)
