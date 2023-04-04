@@ -759,6 +759,15 @@ diff -ura qemu.orig/hw/usb/dev-network.c qemu/hw/usb/dev-network.c
          return strlen((char *)outbuf) + 1;
  
      case OID_GEN_VENDOR_DRIVER_VERSION:
+@@ -1379,7 +1379,7 @@
+     s->speed = 1000000; /* 100MBps, in 100Bps units */
+     s->media_state = 0; /* NDIS_MEDIA_STATE_CONNECTED */;
+     s->filter = 0;
+-    s->vendorid = 0x1234;
++    s->vendorid = 0x8086;
+     s->connection = 1;  /* Connected */
+     s->intr = usb_ep_get(dev, USB_TOKEN_IN, 1);
+     s->bulk_in = usb_ep_get(dev, USB_TOKEN_IN, 2);
 @@ -1425,7 +1425,7 @@
      USBDeviceClass *uc = USB_DEVICE_CLASS(klass);
  
