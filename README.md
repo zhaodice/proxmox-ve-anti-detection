@@ -1,7 +1,7 @@
 # Other Project
 For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
 
-# Proxmox VE(PVE 7.3-3) Anti Detecion
+# Proxmox VE(PVE 7.3-3) Anti Detection
  | Type       | Engine | Bypass |
  |------------|--------|--------|
  | AntiCheat | Mhyprot | ☑️   |
