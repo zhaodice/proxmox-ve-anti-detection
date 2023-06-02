@@ -9,11 +9,15 @@ For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
  | AntiCheat | Easy Anti Cheat(EAC) | ☑️   | 
  | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
  | AntiCheat | Vanguard | ‼️(ERROR 1: Incorrect function error) | 
+ | AntiCheat | Roblex | ‼️(ERROR The application encountered an unrecoverable error) | 
  | Encrypt | VMProtect | ☑️   | 
  | Encrypt | VProtect | ☑️   |  
  | Encrypt | Themida | ☑️   |  
  | Encrypt | Enigma Protector | ☑️   |  
  | Encrypt | Safegine Shielden | ☑️   |  
+
+‼️ There are games cannot run under this environment but I am not sure whether qemu has been detected it because the game doesn't say "Virtual machine detected" specifically. 
+If you have any clue, feel free to tell me :)
 
 
 # Build deb(or download my release ,jump to install section.)
