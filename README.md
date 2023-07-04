@@ -20,7 +20,8 @@ For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
 ‼️ There are games cannot run under this environment but I am not sure whether qemu has been detected, because the game doesn't say "Virtual machine detected" specifically. 
 
 And this game (https://durin-ro.com/download) uses a unknown detection ,shows "Sorry, this application cannot run under virtual machine"
-If you have any clue, feel free to tell me :)
+If you have any clue, feel free to tell me :),
+Issue : https://github.com/zhaodice/proxmox-ve-anti-detection/issues/2
 
 
 # Build deb(or download my release ,jump to install section.)
