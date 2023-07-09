@@ -10,7 +10,7 @@ For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
  | AntiCheat | nProtect GameGuard(NP) | ☑️   | 
  | AntiCheat | Vanguard | ‼️(1: Incorrect function) | 
  | AntiCheat | Roblex | ‼️(The application encountered an unrecoverable error) | 
- | AntiCheat | Gepard (https://durin-ro.com/download) | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
+ | AntiCheat | Gepard Shield | ☑️ (But need to patch host kernel: https://github.com/WCharacter/RDTSC-KVM-Handler ) |
  | Encrypt | VMProtect | ☑️   | 
  | Encrypt | VProtect | ☑️   |  
  | Encrypt | Themida | ☑️   |  
