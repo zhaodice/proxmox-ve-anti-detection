@@ -63,7 +63,7 @@ mv /etc/apt/sources.list.d/pve-enterprise.list /etc/apt/sources.list.d/pve-enter
 
 3.Add follows into `/etc/apt/sources.list`
 ```
-deb https://mirrors.ustc.edu.cn/debian bookworm main contrib non-free
+deb https://mirrors.ustc.edu.cn/debian/ bookworm main contrib non-free
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-updates main contrib non-free
 deb https://mirrors.ustc.edu.cn/debian/ bookworm-backports main contrib non-free
 deb https://mirrors.ustc.edu.cn/debian-security bookworm-security main contrib
