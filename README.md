@@ -1,7 +1,7 @@
 # Other Project
 For QEMU ANTIDECTION, see https://github.com/zhaodice/qemu-anti-detection
 
-# Proxmox VE(PVE 7.3-3) Anti Detection
+# Proxmox VE(PVE 8.0.2-3) Anti Detection
  | Type       | Engine | Bypass |
  |------------|--------|--------|
  | AntiCheat | Mhyprot | ☑️   |
@@ -77,12 +77,12 @@ deb https://mirrors.ustc.edu.cn/proxmox/debian/devel bullseye main
 
 
 4.
-(This patch is made at commit 93d558c1eef8f3ec76983cbe6848b0dc606ea5f1)
+(This patch is made at commit 409db0cd7bdc833e4a09d39492b319426029aa92)
 ```
 apt update
 git clone git://git.proxmox.com/git/pve-qemu.git
 cd pve-qemu
-git reset --hard 93d558c1eef8f3ec76983cbe6848b0dc606ea5f1
+git reset --hard 409db0cd7bdc833e4a09d39492b319426029aa92
 apt install  devscripts
 mk-build-deps --install
 wget "https://github.com/zhaodice/proxmox-ve-anti-detecion/raw/main/001-anti-detection.patch" -O qemu/001-anti-detection.patch
@@ -156,7 +156,7 @@ make clean
 make
 ```
 
-7.You will see a `ERROR` follows
+7.You will see a `ERROR` like follows
 
 ```
 dpkg-source: info: unapplying 001-anti-detection.patch
@@ -171,10 +171,10 @@ but it is NO PROBLME, because you will see a patched deb file `pve-qemu-kvm_7.2.
 
 # Install deb
 
-copy `pve-qemu-kvm_7.2.0-8_amd64.deb` into your real PVE system.(to use this deb , you should install `librbd-dev=16.2.11-pve1` first)
+copy `pve-qemu-kvm_??_amd64.deb` into your real PVE system.(to use this deb , you should install `librbd-dev=16.2.11-pve1` first)
 ```
 apt install librbd-dev
-dpkg -i pve-qemu-kvm_7.2.0-8_amd64.deb
+dpkg -i pve-qemu-kvm_??_amd64.deb
 ```
 
 # VM Show
