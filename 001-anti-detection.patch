@@ -1,8 +1,7 @@
-Only in qemu: 001-anti-detection.patch
-diff -ura qemu.orig/block/vhdx.c qemu/block/vhdx.c
---- qemu.orig/block/vhdx.c	2023-04-04 12:57:13.016522604 +0800
-+++ qemu/block/vhdx.c	2023-04-04 12:57:55.536677343 +0800
-@@ -2007,7 +2007,7 @@
+diff -Naur --no-dereference a/block/vhdx.c b/block/vhdx.c
+--- a/block/vhdx.c	2023-07-04 11:03:21.519219222 +0000
++++ b/block/vhdx.c	2023-07-04 11:39:20.297679935 +0000
+@@ -2009,7 +2009,7 @@
  
      /* The creator field is optional, but may be useful for
       * debugging / diagnostics */
@@ -11,10 +10,10 @@ diff -ura qemu.orig/block/vhdx.c qemu/block/vhdx.c
                                &creator_items, NULL);
      signature = cpu_to_le64(VHDX_FILE_SIGNATURE);
      ret = blk_co_pwrite(blk, VHDX_FILE_ID_OFFSET, sizeof(signature), &signature,
-diff -ura qemu.orig/block/vvfat.c qemu/block/vvfat.c
---- qemu.orig/block/vvfat.c	2023-04-04 12:57:13.016522604 +0800
-+++ qemu/block/vvfat.c	2023-04-04 12:57:55.536677343 +0800
-@@ -1175,7 +1175,7 @@
+diff -Naur --no-dereference a/block/vvfat.c b/block/vvfat.c
+--- a/block/vvfat.c	2023-07-04 11:03:21.519219222 +0000
++++ b/block/vvfat.c	2023-07-04 11:39:20.297679935 +0000
+@@ -1176,7 +1176,7 @@
          }
          memcpy(s->volume_label, label, label_length);
      } else {
@@ -23,9 +22,9 @@ diff -ura qemu.orig/block/vvfat.c qemu/block/vvfat.c
      }
  
      if (floppy) {
-diff -ura qemu.orig/chardev/msmouse.c qemu/chardev/msmouse.c
---- qemu.orig/chardev/msmouse.c	2023-04-04 12:57:13.024522633 +0800
-+++ qemu/chardev/msmouse.c	2023-04-04 12:57:55.536677343 +0800
+diff -Naur --no-dereference a/chardev/msmouse.c b/chardev/msmouse.c
+--- a/chardev/msmouse.c	2023-07-04 11:03:21.523219224 +0000
++++ b/chardev/msmouse.c	2023-07-04 11:39:20.297679935 +0000
 @@ -172,7 +172,7 @@
  }
  
@@ -35,9 +34,9 @@ diff -ura qemu.orig/chardev/msmouse.c qemu/chardev/msmouse.c
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
      .event = msmouse_input_event,
      .sync  = msmouse_input_sync,
-diff -ura qemu.orig/chardev/wctablet.c qemu/chardev/wctablet.c
---- qemu.orig/chardev/wctablet.c	2023-04-04 12:57:13.028522648 +0800
-+++ qemu/chardev/wctablet.c	2023-04-04 12:57:55.536677343 +0800
+diff -Naur --no-dereference a/chardev/wctablet.c b/chardev/wctablet.c
+--- a/chardev/wctablet.c	2023-07-04 11:03:21.523219224 +0000
++++ b/chardev/wctablet.c	2023-07-04 11:39:20.297679935 +0000
 @@ -179,7 +179,7 @@
  }
  
@@ -47,9 +46,9 @@ diff -ura qemu.orig/chardev/wctablet.c qemu/chardev/wctablet.c
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
      .event = wctablet_input_event,
      .sync  = wctablet_input_sync,
-diff -ura qemu.orig/contrib/vhost-user-gpu/vhost-user-gpu.c qemu/contrib/vhost-user-gpu/vhost-user-gpu.c
---- qemu.orig/contrib/vhost-user-gpu/vhost-user-gpu.c	2023-04-04 12:57:13.036522677 +0800
-+++ qemu/contrib/vhost-user-gpu/vhost-user-gpu.c	2023-04-04 12:57:55.536677343 +0800
+diff -Naur --no-dereference a/contrib/vhost-user-gpu/vhost-user-gpu.c b/contrib/vhost-user-gpu/vhost-user-gpu.c
+--- a/contrib/vhost-user-gpu/vhost-user-gpu.c	2023-07-04 11:03:21.527219227 +0000
++++ b/contrib/vhost-user-gpu/vhost-user-gpu.c	2023-07-04 11:39:20.297679935 +0000
 @@ -1190,7 +1190,7 @@
      QTAILQ_INIT(&g.reslist);
      QTAILQ_INIT(&g.fenceq);
@@ -59,9 +58,9 @@ diff -ura qemu.orig/contrib/vhost-user-gpu/vhost-user-gpu.c qemu/contrib/vhost-u
      g_option_context_add_main_entries(context, entries, NULL);
      if (!g_option_context_parse(context, &argc, &argv, &error)) {
          g_printerr("Option parsing failed: %s\n", error->message);
-diff -ura qemu.orig/hw/acpi/aml-build.c qemu/hw/acpi/aml-build.c
---- qemu.orig/hw/acpi/aml-build.c	2023-04-04 12:57:13.096522897 +0800
-+++ qemu/hw/acpi/aml-build.c	2023-04-04 12:57:55.536677343 +0800
+diff -Naur --no-dereference a/hw/acpi/aml-build.c b/hw/acpi/aml-build.c
+--- a/hw/acpi/aml-build.c	2023-07-04 11:03:21.555219247 +0000
++++ b/hw/acpi/aml-build.c	2023-07-04 11:39:20.297679935 +0000
 @@ -1724,11 +1724,11 @@
      build_append_int_noprefix(array, 0, 4); /* Length */
      build_append_int_noprefix(array, desc->rev, 1); /* Revision */
@@ -77,26 +76,22 @@ diff -ura qemu.orig/hw/acpi/aml-build.c qemu/hw/acpi/aml-build.c
      build_append_int_noprefix(array, 1, 4); /* Creator Revision */
  }
  
-diff -ura qemu.orig/hw/acpi/vmgenid.c qemu/hw/acpi/vmgenid.c
---- qemu.orig/hw/acpi/vmgenid.c	2023-04-04 12:57:13.100522912 +0800
-+++ qemu/hw/acpi/vmgenid.c	2023-04-04 13:03:02.929795975 +0800
-@@ -53,9 +53,9 @@
-         build_append_named_dword(ssdt->buf, "VGIA");
-     scope = aml_scope("\\_SB");
-     dev = aml_device("VGEN");
--    aml_append(dev, aml_name_decl("_HID", aml_string("QEMUVGID")));
--    aml_append(dev, aml_name_decl("_CID", aml_string("VM_Gen_Counter")));
--    aml_append(dev, aml_name_decl("_DDN", aml_string("VM_Gen_Counter")));
-+    aml_append(dev, aml_name_decl("_HID", aml_string("ASUSVGID")));
-+    aml_append(dev, aml_name_decl("_CID", aml_string("Gen_Counter")));
-+    aml_append(dev, aml_name_decl("_DDN", aml_string("Gen_Counter")));
- 
-     /* Simple status method to check that address is linked and non-zero */
-     method = aml_method("_STA", 0, AML_NOTSERIALIZED);
-diff -ura qemu.orig/hw/arm/nseries.c qemu/hw/arm/nseries.c
---- qemu.orig/hw/arm/nseries.c	2023-04-04 12:57:13.104522926 +0800
-+++ qemu/hw/arm/nseries.c	2023-04-04 12:57:55.540677358 +0800
-@@ -847,7 +847,7 @@
+diff -Naur --no-dereference a/hw/acpi/vmgenid.c b/hw/acpi/vmgenid.c
+--- a/hw/acpi/vmgenid.c	2023-07-04 12:01:31.057362700 +0000
++++ b/hw/acpi/vmgenid.c	2023-07-20 17:00:52.308762303 +0000
+@@ -25,6 +25,8 @@
+ void vmgenid_build_acpi(VmGenIdState *vms, GArray *table_data, GArray *guid,
+                         BIOSLinker *linker, const char *oem_id)
+ {
++	//FUCK YOU~~~
++	return;
+     Aml *ssdt, *dev, *scope, *method, *addr, *if_ctx;
+     uint32_t vgia_offset;
+     QemuUUID guid_le;
+diff -Naur --no-dereference a/hw/arm/nseries.c b/hw/arm/nseries.c
+--- a/hw/arm/nseries.c	2023-07-04 11:03:21.559219251 +0000
++++ b/hw/arm/nseries.c	2023-07-04 11:39:20.297679935 +0000
+@@ -849,7 +849,7 @@
  
      memset(p, 0, 0x3000);
  
@@ -128,9 +123,9 @@ diff -ura qemu.orig/hw/arm/nseries.c qemu/hw/arm/nseries.c
      stw_p(w++, OMAP_TAG_VERSION_STR);		/* u16 tag */
      stw_p(w++, 24);				/* u16 len */
      strcpy((void *) w, "nolo");			/* char component[12] */
-diff -ura qemu.orig/hw/arm/sbsa-ref.c qemu/hw/arm/sbsa-ref.c
---- qemu.orig/hw/arm/sbsa-ref.c	2023-04-04 12:57:13.104522926 +0800
-+++ qemu/hw/arm/sbsa-ref.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+--- a/hw/arm/sbsa-ref.c	2023-07-04 11:03:21.563219253 +0000
++++ b/hw/arm/sbsa-ref.c	2023-07-04 11:39:20.297679935 +0000
 @@ -851,7 +851,7 @@
      MachineClass *mc = MACHINE_CLASS(oc);
  
@@ -140,41 +135,9 @@ diff -ura qemu.orig/hw/arm/sbsa-ref.c qemu/hw/arm/sbsa-ref.c
      mc->default_cpu_type = ARM_CPU_TYPE_NAME("cortex-a57");
      mc->max_cpus = 512;
      mc->pci_allow_0_address = true;
-diff -ura qemu.orig/hw/arm/virt-acpi-build.c qemu/hw/arm/virt-acpi-build.c
---- qemu.orig/hw/arm/virt-acpi-build.c	2023-04-04 12:57:13.108522941 +0800
-+++ qemu/hw/arm/virt-acpi-build.c	2023-04-04 13:00:28.173232803 +0800
-@@ -96,7 +96,7 @@
- static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
- {
-     Aml *dev = aml_device("FWCF");
--    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
-+    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
-     /* device present, functioning, decoding, not shown in UI */
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
-diff -ura qemu.orig/hw/arm/virt.c qemu/hw/arm/virt.c
---- qemu.orig/hw/arm/virt.c	2023-04-04 12:57:13.108522941 +0800
-+++ qemu/hw/arm/virt.c	2023-04-04 12:57:55.540677358 +0800
-@@ -1611,13 +1611,13 @@
-     VirtMachineClass *vmc = VIRT_MACHINE_GET_CLASS(vms);
-     uint8_t *smbios_tables, *smbios_anchor;
-     size_t smbios_tables_len, smbios_anchor_len;
--    const char *product = "QEMU Virtual Machine";
-+    const char *product = "ASUS Real Machine";
- 
-     if (kvm_enabled()) {
--        product = "KVM Virtual Machine";
-+        product = "ASUS Real Machine";
-     }
- 
--    smbios_set_defaults("QEMU", product,
-+    smbios_set_defaults("ASUS", product,
-                         vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
-                         true, SMBIOS_ENTRY_POINT_TYPE_64);
- 
-diff -ura qemu.orig/hw/audio/hda-codec.c qemu/hw/audio/hda-codec.c
---- qemu.orig/hw/audio/hda-codec.c	2023-04-04 12:57:13.108522941 +0800
-+++ qemu/hw/audio/hda-codec.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+--- a/hw/audio/hda-codec.c	2023-07-04 11:03:21.567219257 +0000
++++ b/hw/audio/hda-codec.c	2023-07-04 11:39:20.297679935 +0000
 @@ -117,7 +117,7 @@
  
  /* some defines */
@@ -184,9 +147,9 @@ diff -ura qemu.orig/hw/audio/hda-codec.c qemu/hw/audio/hda-codec.c
  #define QEMU_HDA_PCM_FORMATS (AC_SUPPCM_BITS_16 |       \
                                0x1fc /* 16 -> 96 kHz */)
  #define QEMU_HDA_AMP_NONE    (0)
-diff -ura qemu.orig/hw/char/escc.c qemu/hw/char/escc.c
---- qemu.orig/hw/char/escc.c	2023-04-04 12:57:13.116522970 +0800
-+++ qemu/hw/char/escc.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/char/escc.c b/hw/char/escc.c
+--- a/hw/char/escc.c	2023-07-04 11:03:21.571219259 +0000
++++ b/hw/char/escc.c	2023-07-04 11:39:20.297679935 +0000
 @@ -959,7 +959,7 @@
  
      if (s->chn[0].type == escc_mouse) {
@@ -196,9 +159,9 @@ diff -ura qemu.orig/hw/char/escc.c qemu/hw/char/escc.c
      }
      if (s->chn[1].type == escc_kbd) {
          s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
-diff -ura qemu.orig/hw/display/edid-generate.c qemu/hw/display/edid-generate.c
---- qemu.orig/hw/display/edid-generate.c	2023-04-04 12:57:13.124523000 +0800
-+++ qemu/hw/display/edid-generate.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/display/edid-generate.c b/hw/display/edid-generate.c
+--- a/hw/display/edid-generate.c	2023-07-04 11:03:21.575219263 +0000
++++ b/hw/display/edid-generate.c	2023-07-04 11:39:20.297679935 +0000
 @@ -394,10 +394,10 @@
      /* =============== set defaults  =============== */
  
@@ -221,40 +184,35 @@ diff -ura qemu.orig/hw/display/edid-generate.c qemu/hw/display/edid-generate.c
      uint32_t serial_nr = info->serial ? atoi(info->serial) : 0;
      stw_be_p(edid +  8, vendor_id);
      stw_le_p(edid + 10, model_nr);
-diff -ura qemu.orig/hw/i386/acpi-build.c qemu/hw/i386/acpi-build.c
---- qemu.orig/hw/i386/acpi-build.c	2023-04-04 12:57:13.136523043 +0800
-+++ qemu/hw/i386/acpi-build.c	2023-04-04 12:57:55.540677358 +0800
-@@ -2520,6 +2520,14 @@
-         g_array_append_vals(tables_blob, u, len);
-     }
+diff -Naur --no-dereference a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+--- a/hw/i386/acpi-build.c	2023-07-04 11:03:21.583219269 +0000
++++ b/hw/i386/acpi-build.c	2023-07-20 16:54:22.568741489 +0000
+@@ -943,6 +943,7 @@
  
-+    /* Disable BGRT (UEFI Logo)*/
-+    acpi_add_table(table_offsets, tables_blob);
-+    AcpiTable table = { .sig = "BGRT", .rev = 1,
-+                        .oem_id = x86ms->oem_id, .oem_table_id = x86ms->oem_table_id };
-+    acpi_table_begin(&table, tables_blob);
-+    build_append_int_noprefix(tables_blob,0x00000000,4);
-+    acpi_table_end(tables->linker, &table);
-+
-     /* RSDT is pointed to by RSDP */
-     rsdt = tables_blob->len;
-     build_rsdt(tables_blob, tables->linker, table_offsets,
-diff -ura qemu.orig/hw/i386/fw_cfg.c qemu/hw/i386/fw_cfg.c
---- qemu.orig/hw/i386/fw_cfg.c	2023-04-04 12:57:13.136523043 +0800
-+++ qemu/hw/i386/fw_cfg.c	2023-04-04 12:59:25.521004805 +0800
-@@ -205,7 +205,7 @@
-     Aml *dev = aml_device("FWCF");
-     Aml *crs = aml_resource_template();
+ static void build_dbg_aml(Aml *table)
+ {
++	return;
+     Aml *field;
+     Aml *method;
+     Aml *while_ctx;
+@@ -1770,13 +1771,6 @@
+     aml_append(scope, aml_name_decl("_S5", pkg));
+     aml_append(dsdt, scope);
  
--    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
-+    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
- 
-     /* device present, functioning, decoding, not shown in UI */
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-diff -ura qemu.orig/hw/i386/pc_piix.c qemu/hw/i386/pc_piix.c
---- qemu.orig/hw/i386/pc_piix.c	2023-04-04 12:57:13.136523043 +0800
-+++ qemu/hw/i386/pc_piix.c	2023-04-04 12:57:55.540677358 +0800
-@@ -184,7 +184,7 @@
+-    /* create fw_cfg node, unconditionally */
+-    {
+-        scope = aml_scope("\\_SB.PCI0");
+-        fw_cfg_add_acpi_dsdt(scope, x86ms->fw_cfg);
+-        aml_append(dsdt, scope);
+-    }
+-
+     sb_scope = aml_scope("\\_SB");
+     {
+         Object *pci_host = acpi_get_i386_pci_host();
+diff -Naur --no-dereference a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+--- a/hw/i386/pc_piix.c	2023-07-04 11:03:21.587219272 +0000
++++ b/hw/i386/pc_piix.c	2023-07-04 11:39:20.301679934 +0000
+@@ -198,7 +198,7 @@
      if (pcmc->smbios_defaults) {
          MachineClass *mc = MACHINE_GET_CLASS(machine);
          /* These values are guest ABI, do not change */
@@ -263,10 +221,10 @@ diff -ura qemu.orig/hw/i386/pc_piix.c qemu/hw/i386/pc_piix.c
                              mc->name, pcmc->smbios_legacy_mode,
                              pcmc->smbios_uuid_encoded,
                              pcms->smbios_entry_point_type);
-diff -ura qemu.orig/hw/i386/pc_q35.c qemu/hw/i386/pc_q35.c
---- qemu.orig/hw/i386/pc_q35.c	2023-04-04 12:57:13.136523043 +0800
-+++ qemu/hw/i386/pc_q35.c	2023-04-04 12:57:55.540677358 +0800
-@@ -198,9 +198,9 @@
+diff -Naur --no-dereference a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+--- a/hw/i386/pc_q35.c	2023-07-04 11:03:21.587219272 +0000
++++ b/hw/i386/pc_q35.c	2023-07-04 11:39:20.301679934 +0000
+@@ -199,9 +199,9 @@
  
      if (pcmc->smbios_defaults) {
          /* These values are guest ABI, do not change */
@@ -279,10 +237,10 @@ diff -ura qemu.orig/hw/i386/pc_q35.c qemu/hw/i386/pc_q35.c
                              pcms->smbios_entry_point_type);
      }
  
-diff -ura qemu.orig/hw/ide/atapi.c qemu/hw/ide/atapi.c
---- qemu.orig/hw/ide/atapi.c	2023-04-04 12:57:13.140523058 +0800
-+++ qemu/hw/ide/atapi.c	2023-04-04 12:57:55.540677358 +0800
-@@ -796,8 +796,8 @@
+diff -Naur --no-dereference a/hw/ide/atapi.c b/hw/ide/atapi.c
+--- a/hw/ide/atapi.c	2023-07-04 11:03:21.587219272 +0000
++++ b/hw/ide/atapi.c	2023-07-04 11:39:20.301679934 +0000
+@@ -797,8 +797,8 @@
          buf[5] = 0;    /* reserved */
          buf[6] = 0;    /* reserved */
          buf[7] = 0;    /* reserved */
@@ -293,10 +251,10 @@ diff -ura qemu.orig/hw/ide/atapi.c qemu/hw/ide/atapi.c
          padstr8(buf + 32, 4, s->version);
          idx = 36;
      }
-diff -ura qemu.orig/hw/ide/core.c qemu/hw/ide/core.c
---- qemu.orig/hw/ide/core.c	2023-04-04 12:57:13.140523058 +0800
-+++ qemu/hw/ide/core.c	2023-04-04 12:57:55.540677358 +0800
-@@ -2592,20 +2592,20 @@
+diff -Naur --no-dereference a/hw/ide/core.c b/hw/ide/core.c
+--- a/hw/ide/core.c	2023-07-04 11:21:46.000000000 +0000
++++ b/hw/ide/core.c	2023-07-04 11:39:20.301679934 +0000
+@@ -2616,20 +2616,20 @@
          pstrcpy(s->drive_serial_str, sizeof(s->drive_serial_str), serial);
      } else {
          snprintf(s->drive_serial_str, sizeof(s->drive_serial_str),
@@ -321,9 +279,9 @@ diff -ura qemu.orig/hw/ide/core.c qemu/hw/ide/core.c
              break;
          }
      }
-diff -ura qemu.orig/hw/input/adb-kbd.c qemu/hw/input/adb-kbd.c
---- qemu.orig/hw/input/adb-kbd.c	2023-04-04 12:57:13.140523058 +0800
-+++ qemu/hw/input/adb-kbd.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/input/adb-kbd.c b/hw/input/adb-kbd.c
+--- a/hw/input/adb-kbd.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/adb-kbd.c	2023-07-04 11:39:20.301679934 +0000
 @@ -356,7 +356,7 @@
  }
  
@@ -333,9 +291,9 @@ diff -ura qemu.orig/hw/input/adb-kbd.c qemu/hw/input/adb-kbd.c
      .mask  = INPUT_EVENT_MASK_KEY,
      .event = adb_keyboard_event,
  };
-diff -ura qemu.orig/hw/input/adb-mouse.c qemu/hw/input/adb-mouse.c
---- qemu.orig/hw/input/adb-mouse.c	2023-04-04 12:57:13.140523058 +0800
-+++ qemu/hw/input/adb-mouse.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/input/adb-mouse.c b/hw/input/adb-mouse.c
+--- a/hw/input/adb-mouse.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/adb-mouse.c	2023-07-04 11:39:20.301679934 +0000
 @@ -236,7 +236,7 @@
  
      amc->parent_realize(dev, errp);
@@ -345,9 +303,9 @@ diff -ura qemu.orig/hw/input/adb-mouse.c qemu/hw/input/adb-mouse.c
  }
  
  static void adb_mouse_initfn(Object *obj)
-diff -ura qemu.orig/hw/input/ads7846.c qemu/hw/input/ads7846.c
---- qemu.orig/hw/input/ads7846.c	2023-04-04 12:57:13.140523058 +0800
-+++ qemu/hw/input/ads7846.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/input/ads7846.c b/hw/input/ads7846.c
+--- a/hw/input/ads7846.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/ads7846.c	2023-07-04 11:39:20.301679934 +0000
 @@ -154,7 +154,7 @@
  
      /* We want absolute coordinates */
@@ -357,9 +315,9 @@ diff -ura qemu.orig/hw/input/ads7846.c qemu/hw/input/ads7846.c
  
      ads7846_int_update(s);
  
-diff -ura qemu.orig/hw/input/hid.c qemu/hw/input/hid.c
---- qemu.orig/hw/input/hid.c	2023-04-04 12:57:13.144523073 +0800
-+++ qemu/hw/input/hid.c	2023-04-04 12:57:55.540677358 +0800
+diff -Naur --no-dereference a/hw/input/hid.c b/hw/input/hid.c
+--- a/hw/input/hid.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/hid.c	2023-07-04 11:39:20.301679934 +0000
 @@ -511,20 +511,20 @@
  }
  
@@ -384,10 +342,10 @@ diff -ura qemu.orig/hw/input/hid.c qemu/hw/input/hid.c
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_ABS,
      .event = hid_pointer_event,
      .sync  = hid_pointer_sync,
-diff -ura qemu.orig/hw/input/ps2.c qemu/hw/input/ps2.c
---- qemu.orig/hw/input/ps2.c	2023-04-04 12:57:13.144523073 +0800
-+++ qemu/hw/input/ps2.c	2023-04-04 12:57:55.540677358 +0800
-@@ -1214,7 +1214,7 @@
+diff -Naur --no-dereference a/hw/input/ps2.c b/hw/input/ps2.c
+--- a/hw/input/ps2.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/ps2.c	2023-07-04 11:39:20.301679934 +0000
+@@ -1232,7 +1232,7 @@
  };
  
  static QemuInputHandler ps2_keyboard_handler = {
@@ -396,7 +354,7 @@ diff -ura qemu.orig/hw/input/ps2.c qemu/hw/input/ps2.c
      .mask  = INPUT_EVENT_MASK_KEY,
      .event = ps2_keyboard_event,
  };
-@@ -1225,7 +1225,7 @@
+@@ -1243,7 +1243,7 @@
  }
  
  static QemuInputHandler ps2_mouse_handler = {
@@ -405,9 +363,9 @@ diff -ura qemu.orig/hw/input/ps2.c qemu/hw/input/ps2.c
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
      .event = ps2_mouse_event,
      .sync  = ps2_mouse_sync,
-diff -ura qemu.orig/hw/input/tsc2005.c qemu/hw/input/tsc2005.c
---- qemu.orig/hw/input/tsc2005.c	2023-04-04 12:57:13.144523073 +0800
-+++ qemu/hw/input/tsc2005.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/input/tsc2005.c b/hw/input/tsc2005.c
+--- a/hw/input/tsc2005.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/tsc2005.c	2023-07-04 11:39:20.301679934 +0000
 @@ -510,7 +510,7 @@
      tsc2005_reset(s);
  
@@ -417,10 +375,10 @@ diff -ura qemu.orig/hw/input/tsc2005.c qemu/hw/input/tsc2005.c
  
      qemu_register_reset((void *) tsc2005_reset, s);
      vmstate_register(NULL, 0, &vmstate_tsc2005, s);
-diff -ura qemu.orig/hw/input/tsc210x.c qemu/hw/input/tsc210x.c
---- qemu.orig/hw/input/tsc210x.c	2023-04-04 12:57:13.144523073 +0800
-+++ qemu/hw/input/tsc210x.c	2023-04-04 12:57:55.544677372 +0800
-@@ -1106,7 +1106,7 @@
+diff -Naur --no-dereference a/hw/input/tsc210x.c b/hw/input/tsc210x.c
+--- a/hw/input/tsc210x.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/tsc210x.c	2023-07-04 11:39:20.301679934 +0000
+@@ -1105,7 +1105,7 @@
      tsc210x_reset(s);
  
      qemu_add_mouse_event_handler(tsc210x_touchscreen_event, s, 1,
@@ -429,7 +387,7 @@ diff -ura qemu.orig/hw/input/tsc210x.c qemu/hw/input/tsc210x.c
  
      AUD_register_card(s->name, &s->card);
  
-@@ -1154,7 +1154,7 @@
+@@ -1153,7 +1153,7 @@
      tsc210x_reset(s);
  
      qemu_add_mouse_event_handler(tsc210x_touchscreen_event, s, 1,
@@ -438,9 +396,9 @@ diff -ura qemu.orig/hw/input/tsc210x.c qemu/hw/input/tsc210x.c
  
      AUD_register_card(s->name, &s->card);
  
-diff -ura qemu.orig/hw/input/virtio-input-hid.c qemu/hw/input/virtio-input-hid.c
---- qemu.orig/hw/input/virtio-input-hid.c	2023-04-04 12:57:13.144523073 +0800
-+++ qemu/hw/input/virtio-input-hid.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
+--- a/hw/input/virtio-input-hid.c	2023-07-04 11:03:21.591219274 +0000
++++ b/hw/input/virtio-input-hid.c	2023-07-04 11:39:20.301679934 +0000
 @@ -16,9 +16,9 @@
  
  #include "standard-headers/linux/input.h"
@@ -454,10 +412,10 @@ diff -ura qemu.orig/hw/input/virtio-input-hid.c qemu/hw/input/virtio-input-hid.c
  
  /* ----------------------------------------------------------------- */
  
-diff -ura qemu.orig/hw/m68k/virt.c qemu/hw/m68k/virt.c
---- qemu.orig/hw/m68k/virt.c	2023-04-04 12:57:13.156523117 +0800
-+++ qemu/hw/m68k/virt.c	2023-04-04 12:57:55.544677372 +0800
-@@ -301,7 +301,7 @@
+diff -Naur --no-dereference a/hw/m68k/virt.c b/hw/m68k/virt.c
+--- a/hw/m68k/virt.c	2023-07-04 11:03:21.599219280 +0000
++++ b/hw/m68k/virt.c	2023-07-04 11:39:20.301679934 +0000
+@@ -302,7 +302,7 @@
  static void virt_machine_class_init(ObjectClass *oc, void *data)
  {
      MachineClass *mc = MACHINE_CLASS(oc);
@@ -466,9 +424,9 @@ diff -ura qemu.orig/hw/m68k/virt.c qemu/hw/m68k/virt.c
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
-diff -ura qemu.orig/hw/misc/pvpanic-isa.c qemu/hw/misc/pvpanic-isa.c
---- qemu.orig/hw/misc/pvpanic-isa.c	2023-04-04 12:57:13.164523146 +0800
-+++ qemu/hw/misc/pvpanic-isa.c	2023-04-04 13:02:20.777642581 +0800
+diff -Naur --no-dereference a/hw/misc/pvpanic-isa.c b/hw/misc/pvpanic-isa.c
+--- a/hw/misc/pvpanic-isa.c	2023-07-04 11:03:21.607219286 +0000
++++ b/hw/misc/pvpanic-isa.c	2023-07-04 11:39:20.301679934 +0000
 @@ -70,7 +70,7 @@
      PVPanicISAState *s = PVPANIC_ISA_DEVICE(adev);
      Aml *dev = aml_device("PEVT");
@@ -478,10 +436,10 @@ diff -ura qemu.orig/hw/misc/pvpanic-isa.c qemu/hw/misc/pvpanic-isa.c
  
      crs = aml_resource_template();
      aml_append(crs,
-diff -ura qemu.orig/hw/nvme/ctrl.c qemu/hw/nvme/ctrl.c
---- qemu.orig/hw/nvme/ctrl.c	2023-04-04 12:57:13.176523190 +0800
-+++ qemu/hw/nvme/ctrl.c	2023-04-04 12:57:55.544677372 +0800
-@@ -7355,7 +7355,7 @@
+diff -Naur --no-dereference a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
+--- a/hw/nvme/ctrl.c	2023-07-04 11:03:21.615219292 +0000
++++ b/hw/nvme/ctrl.c	2023-07-04 11:39:20.301679934 +0000
+@@ -8158,7 +8158,7 @@
  
      id->vid = cpu_to_le16(pci_get_word(pci_conf + PCI_VENDOR_ID));
      id->ssvid = cpu_to_le16(pci_get_word(pci_conf + PCI_SUBSYSTEM_VENDOR_ID));
@@ -490,10 +448,9 @@ diff -ura qemu.orig/hw/nvme/ctrl.c qemu/hw/nvme/ctrl.c
      strpadcpy((char *)id->fr, sizeof(id->fr), QEMU_VERSION, ' ');
      strpadcpy((char *)id->sn, sizeof(id->sn), n->params.serial, ' ');
  
-Only in qemu/hw/nvme: ctrl.c.orig
-diff -ura qemu.orig/hw/nvram/fw_cfg.c qemu/hw/nvram/fw_cfg.c
---- qemu.orig/hw/nvram/fw_cfg.c	2023-04-04 12:57:13.176523190 +0800
-+++ qemu/hw/nvram/fw_cfg.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+--- a/hw/nvram/fw_cfg.c	2023-07-04 11:03:21.615219292 +0000
++++ b/hw/nvram/fw_cfg.c	2023-07-04 11:39:20.301679934 +0000
 @@ -56,7 +56,7 @@
  #define FW_CFG_DMA_CTL_SELECT  0x08
  #define FW_CFG_DMA_CTL_WRITE   0x10
@@ -503,9 +460,9 @@ diff -ura qemu.orig/hw/nvram/fw_cfg.c qemu/hw/nvram/fw_cfg.c
  
  struct FWCfgEntry {
      uint32_t len;
-diff -ura qemu.orig/hw/pci-host/gpex.c qemu/hw/pci-host/gpex.c
---- qemu.orig/hw/pci-host/gpex.c	2023-04-04 12:57:13.180523205 +0800
-+++ qemu/hw/pci-host/gpex.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/pci-host/gpex.c b/hw/pci-host/gpex.c
+--- a/hw/pci-host/gpex.c	2023-07-04 11:03:21.619219295 +0000
++++ b/hw/pci-host/gpex.c	2023-07-04 11:39:20.301679934 +0000
 @@ -207,7 +207,7 @@
      DeviceClass *dc = DEVICE_CLASS(klass);
  
@@ -515,21 +472,23 @@ diff -ura qemu.orig/hw/pci-host/gpex.c qemu/hw/pci-host/gpex.c
      dc->vmsd = &vmstate_gpex_root;
      k->vendor_id = PCI_VENDOR_ID_REDHAT;
      k->device_id = PCI_DEVICE_ID_REDHAT_PCIE_HOST;
-diff -ura qemu.orig/hw/ppc/e500plat.c qemu/hw/ppc/e500plat.c
---- qemu.orig/hw/ppc/e500plat.c	2023-04-04 12:57:13.184523219 +0800
-+++ qemu/hw/ppc/e500plat.c	2023-04-04 12:57:55.544677372 +0800
-@@ -22,7 +22,7 @@
+diff -Naur --no-dereference a/hw/ppc/e500plat.c b/hw/ppc/e500plat.c
+--- a/hw/ppc/e500plat.c	2023-07-04 11:03:21.623219298 +0000
++++ b/hw/ppc/e500plat.c	2023-07-20 16:47:44.428720226 +0000
+@@ -22,8 +22,8 @@
  
  static void e500plat_fixup_devtree(void *fdt)
  {
 -    const char model[] = "QEMU ppce500";
+-    const char compatible[] = "fsl,qemu-e500";
 +    const char model[] = "ASUS ppce500";
-     const char compatible[] = "fsl,qemu-e500";
++    const char compatible[] = "fsl,asus-e500";
  
      qemu_fdt_setprop(fdt, "/", "model", model, sizeof(model));
-diff -ura qemu.orig/hw/scsi/mptconfig.c qemu/hw/scsi/mptconfig.c
---- qemu.orig/hw/scsi/mptconfig.c	2023-04-04 12:57:13.200523278 +0800
-+++ qemu/hw/scsi/mptconfig.c	2023-04-04 12:57:55.544677372 +0800
+     qemu_fdt_setprop(fdt, "/", "compatible", compatible,
+diff -Naur --no-dereference a/hw/scsi/mptconfig.c b/hw/scsi/mptconfig.c
+--- a/hw/scsi/mptconfig.c	2023-07-04 11:03:21.635219307 +0000
++++ b/hw/scsi/mptconfig.c	2023-07-04 11:39:20.301679934 +0000
 @@ -189,12 +189,12 @@
  size_t mptsas_config_manufacturing_0(MPTSASState *s, uint8_t **data, int address)
  {
@@ -548,9 +507,9 @@ diff -ura qemu.orig/hw/scsi/mptconfig.c qemu/hw/scsi/mptconfig.c
  }
  
  static
-diff -ura qemu.orig/hw/scsi/scsi-bus.c qemu/hw/scsi/scsi-bus.c
---- qemu.orig/hw/scsi/scsi-bus.c	2023-04-04 12:57:13.200523278 +0800
-+++ qemu/hw/scsi/scsi-bus.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
+--- a/hw/scsi/scsi-bus.c	2023-07-04 11:03:21.635219307 +0000
++++ b/hw/scsi/scsi-bus.c	2023-07-04 11:39:20.301679934 +0000
 @@ -555,8 +555,8 @@
          r->buf[3] = 2 | 0x10; /* HiSup, response data format */
          r->buf[4] = r->len - 5; /* Additional Length = (Len - 1) - 4 */
@@ -562,10 +521,10 @@ diff -ura qemu.orig/hw/scsi/scsi-bus.c qemu/hw/scsi/scsi-bus.c
          pstrcpy((char *) &r->buf[32], 4, qemu_hw_version());
      }
      return true;
-diff -ura qemu.orig/hw/scsi/scsi-disk.c qemu/hw/scsi/scsi-disk.c
---- qemu.orig/hw/scsi/scsi-disk.c	2023-04-04 12:57:13.204523292 +0800
-+++ qemu/hw/scsi/scsi-disk.c	2023-04-04 12:57:55.544677372 +0800
-@@ -2475,7 +2475,7 @@
+diff -Naur --no-dereference a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
+--- a/hw/scsi/scsi-disk.c	2023-07-04 11:03:21.635219307 +0000
++++ b/hw/scsi/scsi-disk.c	2023-07-04 11:39:20.301679934 +0000
+@@ -2487,7 +2487,7 @@
          s->version = g_strdup(qemu_hw_version());
      }
      if (!s->vendor) {
@@ -574,7 +533,7 @@ diff -ura qemu.orig/hw/scsi/scsi-disk.c qemu/hw/scsi/scsi-disk.c
      }
      if (!s->device_id) {
          if (s->serial) {
-@@ -2530,7 +2530,7 @@
+@@ -2542,7 +2542,7 @@
      s->qdev.blocksize = s->qdev.conf.logical_block_size;
      s->qdev.type = TYPE_DISK;
      if (!s->product) {
@@ -583,7 +542,7 @@ diff -ura qemu.orig/hw/scsi/scsi-disk.c qemu/hw/scsi/scsi-disk.c
      }
      scsi_realize(&s->qdev, errp);
  out:
-@@ -2564,7 +2564,7 @@
+@@ -2576,7 +2576,7 @@
      s->qdev.type = TYPE_ROM;
      s->features |= 1 << SCSI_DISK_F_REMOVABLE;
      if (!s->product) {
@@ -592,9 +551,9 @@ diff -ura qemu.orig/hw/scsi/scsi-disk.c qemu/hw/scsi/scsi-disk.c
      }
      scsi_realize(&s->qdev, errp);
      aio_context_release(ctx);
-diff -ura qemu.orig/hw/scsi/spapr_vscsi.c qemu/hw/scsi/spapr_vscsi.c
---- qemu.orig/hw/scsi/spapr_vscsi.c	2023-04-04 12:57:13.204523292 +0800
-+++ qemu/hw/scsi/spapr_vscsi.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/scsi/spapr_vscsi.c b/hw/scsi/spapr_vscsi.c
+--- a/hw/scsi/spapr_vscsi.c	2023-07-04 11:03:21.635219307 +0000
++++ b/hw/scsi/spapr_vscsi.c	2023-07-04 11:39:20.301679934 +0000
 @@ -713,8 +713,8 @@
      resp_data[3] = 0x02;   /* Resp data format */
      resp_data[4] = 36 - 5; /* Additional length */
@@ -606,9 +565,21 @@ diff -ura qemu.orig/hw/scsi/spapr_vscsi.c qemu/hw/scsi/spapr_vscsi.c
  
      req->writing = 0;
      vscsi_preprocess_desc(req);
-diff -ura qemu.orig/hw/usb/dev-audio.c qemu/hw/usb/dev-audio.c
---- qemu.orig/hw/usb/dev-audio.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-audio.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/smbios/smbios.c b/hw/smbios/smbios.c
+--- a/hw/smbios/smbios.c	2023-07-04 11:03:21.639219310 +0000
++++ b/hw/smbios/smbios.c	2023-07-05 14:25:47.896065410 +0000
+@@ -615,7 +615,7 @@
+ 
+     t->bios_characteristics = cpu_to_le64(0x08); /* Not supported */
+     t->bios_characteristics_extension_bytes[0] = 0;
+-    t->bios_characteristics_extension_bytes[1] = 0x14; /* TCD/SVVP | VM */
++    t->bios_characteristics_extension_bytes[1] = 0x08; /* TCD/SVVP */
+     if (type0.uefi) {
+         t->bios_characteristics_extension_bytes[1] |= 0x08; /* |= UEFI */
+     }
+diff -Naur --no-dereference a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+--- a/hw/usb/dev-audio.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-audio.c	2023-07-04 11:39:20.301679934 +0000
 @@ -73,8 +73,8 @@
  };
  
@@ -629,9 +600,9 @@ diff -ura qemu.orig/hw/usb/dev-audio.c qemu/hw/usb/dev-audio.c
      k->realize        = usb_audio_realize;
      k->handle_reset   = usb_audio_handle_reset;
      k->handle_control = usb_audio_handle_control;
-diff -ura qemu.orig/hw/usb/dev-hid.c qemu/hw/usb/dev-hid.c
---- qemu.orig/hw/usb/dev-hid.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-hid.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+--- a/hw/usb/dev-hid.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-hid.c	2023-07-04 11:39:20.301679934 +0000
 @@ -63,10 +63,10 @@
  };
  
@@ -674,9 +645,9 @@ diff -ura qemu.orig/hw/usb/dev-hid.c qemu/hw/usb/dev-hid.c
      dc->vmsd = &vmstate_usb_kbd;
      device_class_set_props(dc, usb_keyboard_properties);
      set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
-diff -ura qemu.orig/hw/usb/dev-hub.c qemu/hw/usb/dev-hub.c
---- qemu.orig/hw/usb/dev-hub.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-hub.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
+--- a/hw/usb/dev-hub.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-hub.c	2023-07-04 11:39:20.301679934 +0000
 @@ -104,9 +104,9 @@
  };
  
@@ -699,9 +670,9 @@ diff -ura qemu.orig/hw/usb/dev-hub.c qemu/hw/usb/dev-hub.c
      uc->usb_desc       = &desc_hub;
      uc->find_device    = usb_hub_find_device;
      uc->handle_reset   = usb_hub_handle_reset;
-diff -ura qemu.orig/hw/usb/dev-mtp.c qemu/hw/usb/dev-mtp.c
---- qemu.orig/hw/usb/dev-mtp.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-mtp.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+--- a/hw/usb/dev-mtp.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-mtp.c	2023-07-04 11:39:20.301679934 +0000
 @@ -247,8 +247,8 @@
  
  /* ----------------------------------------------------------------------- */
@@ -722,9 +693,9 @@ diff -ura qemu.orig/hw/usb/dev-mtp.c qemu/hw/usb/dev-mtp.c
      uc->usb_desc       = &desc;
      uc->cancel_packet  = usb_mtp_cancel_packet;
      uc->handle_attach  = usb_desc_attach;
-diff -ura qemu.orig/hw/usb/dev-network.c qemu/hw/usb/dev-network.c
---- qemu.orig/hw/usb/dev-network.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-network.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-network.c b/hw/usb/dev-network.c
+--- a/hw/usb/dev-network.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-network.c	2023-07-04 11:39:20.305679934 +0000
 @@ -99,15 +99,15 @@
  #define ETH_FRAME_LEN                   1514 /* Max. octets in frame sans FCS */
  
@@ -777,9 +748,9 @@ diff -ura qemu.orig/hw/usb/dev-network.c qemu/hw/usb/dev-network.c
      uc->usb_desc       = &desc_net;
      uc->handle_reset   = usb_net_handle_reset;
      uc->handle_control = usb_net_handle_control;
-diff -ura qemu.orig/hw/usb/dev-serial.c qemu/hw/usb/dev-serial.c
---- qemu.orig/hw/usb/dev-serial.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-serial.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-serial.c b/hw/usb/dev-serial.c
+--- a/hw/usb/dev-serial.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-serial.c	2023-07-04 11:39:20.305679934 +0000
 @@ -119,9 +119,9 @@
  };
  
@@ -811,9 +782,9 @@ diff -ura qemu.orig/hw/usb/dev-serial.c qemu/hw/usb/dev-serial.c
      uc->usb_desc       = &desc_braille;
      device_class_set_props(dc, braille_properties);
  }
-diff -ura qemu.orig/hw/usb/dev-smartcard-reader.c qemu/hw/usb/dev-smartcard-reader.c
---- qemu.orig/hw/usb/dev-smartcard-reader.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-smartcard-reader.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-smartcard-reader.c b/hw/usb/dev-smartcard-reader.c
+--- a/hw/usb/dev-smartcard-reader.c	2023-07-04 11:03:21.643219313 +0000
++++ b/hw/usb/dev-smartcard-reader.c	2023-07-04 11:39:20.305679934 +0000
 @@ -80,8 +80,8 @@
  #define CCID_CONTROL_GET_CLOCK_FREQUENCIES  0x2
  #define CCID_CONTROL_GET_DATA_RATES         0x3
@@ -825,7 +796,7 @@ diff -ura qemu.orig/hw/usb/dev-smartcard-reader.c qemu/hw/usb/dev-smartcard-read
  #define CCID_INTERFACE_NAME             "CCID Interface"
  #define CCID_SERIAL_NUMBER_STRING       "1"
  /*
-@@ -417,8 +417,8 @@
+@@ -419,8 +419,8 @@
  };
  
  static const USBDescStrings desc_strings = {
@@ -836,7 +807,7 @@ diff -ura qemu.orig/hw/usb/dev-smartcard-reader.c qemu/hw/usb/dev-smartcard-read
      [STR_SERIALNUMBER]  = "1",
      [STR_INTERFACE]     = "CCID Interface",
  };
-@@ -1444,7 +1444,7 @@
+@@ -1443,7 +1443,7 @@
      HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(klass);
  
      uc->realize        = ccid_realize;
@@ -845,9 +816,9 @@ diff -ura qemu.orig/hw/usb/dev-smartcard-reader.c qemu/hw/usb/dev-smartcard-read
      uc->usb_desc       = &desc_ccid;
      uc->handle_reset   = ccid_handle_reset;
      uc->handle_control = ccid_handle_control;
-diff -ura qemu.orig/hw/usb/dev-storage.c qemu/hw/usb/dev-storage.c
---- qemu.orig/hw/usb/dev-storage.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-storage.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+--- a/hw/usb/dev-storage.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/dev-storage.c	2023-07-04 11:39:20.305679934 +0000
 @@ -47,8 +47,8 @@
  };
  
@@ -868,9 +839,9 @@ diff -ura qemu.orig/hw/usb/dev-storage.c qemu/hw/usb/dev-storage.c
      uc->usb_desc       = &desc;
      uc->cancel_packet  = usb_msd_cancel_io;
      uc->handle_attach  = usb_desc_attach;
-diff -ura qemu.orig/hw/usb/dev-uas.c qemu/hw/usb/dev-uas.c
---- qemu.orig/hw/usb/dev-uas.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-uas.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
+--- a/hw/usb/dev-uas.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/dev-uas.c	2023-07-04 11:39:20.305679934 +0000
 @@ -171,9 +171,9 @@
  };
  
@@ -883,9 +854,9 @@ diff -ura qemu.orig/hw/usb/dev-uas.c qemu/hw/usb/dev-uas.c
      [STR_CONFIG_HIGH]  = "High speed config (usb 2.0)",
      [STR_CONFIG_SUPER] = "Super speed config (usb 3.0)",
  };
-diff -ura qemu.orig/hw/usb/dev-wacom.c qemu/hw/usb/dev-wacom.c
---- qemu.orig/hw/usb/dev-wacom.c	2023-04-04 12:57:13.216523336 +0800
-+++ qemu/hw/usb/dev-wacom.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/dev-wacom.c b/hw/usb/dev-wacom.c
+--- a/hw/usb/dev-wacom.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/dev-wacom.c	2023-07-04 11:39:20.305679934 +0000
 @@ -64,7 +64,7 @@
  };
  
@@ -931,9 +902,9 @@ diff -ura qemu.orig/hw/usb/dev-wacom.c qemu/hw/usb/dev-wacom.c
      dc->vmsd = &vmstate_usb_wacom;
  }
  
-diff -ura qemu.orig/hw/usb/u2f-emulated.c qemu/hw/usb/u2f-emulated.c
---- qemu.orig/hw/usb/u2f-emulated.c	2023-04-04 12:57:13.220523351 +0800
-+++ qemu/hw/usb/u2f-emulated.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/u2f-emulated.c b/hw/usb/u2f-emulated.c
+--- a/hw/usb/u2f-emulated.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/u2f-emulated.c	2023-07-04 11:39:20.305679934 +0000
 @@ -386,7 +386,7 @@
      kc->realize = u2f_emulated_realize;
      kc->unrealize = u2f_emulated_unrealize;
@@ -943,9 +914,9 @@ diff -ura qemu.orig/hw/usb/u2f-emulated.c qemu/hw/usb/u2f-emulated.c
      device_class_set_props(dc, u2f_emulated_properties);
  }
  
-diff -ura qemu.orig/hw/usb/u2f-passthru.c qemu/hw/usb/u2f-passthru.c
---- qemu.orig/hw/usb/u2f-passthru.c	2023-04-04 12:57:13.220523351 +0800
-+++ qemu/hw/usb/u2f-passthru.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
+--- a/hw/usb/u2f-passthru.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/u2f-passthru.c	2023-07-04 11:39:20.305679934 +0000
 @@ -531,7 +531,7 @@
      kc->realize = u2f_passthru_realize;
      kc->unrealize = u2f_passthru_unrealize;
@@ -955,9 +926,9 @@ diff -ura qemu.orig/hw/usb/u2f-passthru.c qemu/hw/usb/u2f-passthru.c
      dc->vmsd = &u2f_passthru_vmstate;
      device_class_set_props(dc, u2f_passthru_properties);
      set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-diff -ura qemu.orig/hw/usb/u2f.c qemu/hw/usb/u2f.c
---- qemu.orig/hw/usb/u2f.c	2023-04-04 12:57:13.220523351 +0800
-+++ qemu/hw/usb/u2f.c	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/hw/usb/u2f.c b/hw/usb/u2f.c
+--- a/hw/usb/u2f.c	2023-07-04 11:03:21.647219316 +0000
++++ b/hw/usb/u2f.c	2023-07-04 11:39:20.305679934 +0000
 @@ -46,7 +46,7 @@
  };
  
@@ -985,9 +956,9 @@ diff -ura qemu.orig/hw/usb/u2f.c qemu/hw/usb/u2f.c
      dc->vmsd           = &vmstate_u2f_key;
  }
  
-diff -ura qemu.orig/include/hw/acpi/aml-build.h qemu/include/hw/acpi/aml-build.h
---- qemu.orig/include/hw/acpi/aml-build.h	2023-04-04 12:57:13.244523439 +0800
-+++ qemu/include/hw/acpi/aml-build.h	2023-04-04 12:57:55.544677372 +0800
+diff -Naur --no-dereference a/include/hw/acpi/aml-build.h b/include/hw/acpi/aml-build.h
+--- a/include/hw/acpi/aml-build.h	2023-07-04 11:03:21.663219327 +0000
++++ b/include/hw/acpi/aml-build.h	2023-07-04 11:39:20.305679934 +0000
 @@ -4,8 +4,8 @@
  #include "hw/acpi/acpi-defs.h"
  #include "hw/acpi/bios-linker-loader.h"
@@ -999,10 +970,10 @@ diff -ura qemu.orig/include/hw/acpi/aml-build.h qemu/include/hw/acpi/aml-build.h
  
  #define ACPI_BUILD_TABLE_FILE "etc/acpi/tables"
  #define ACPI_BUILD_RSDP_FILE "etc/acpi/rsdp"
-diff -ura qemu.orig/include/hw/pci/pci.h qemu/include/hw/pci/pci.h
---- qemu.orig/include/hw/pci/pci.h	2023-04-04 12:57:13.264523512 +0800
-+++ qemu/include/hw/pci/pci.h	2023-04-04 12:57:55.544677372 +0800
-@@ -72,9 +72,9 @@
+diff -Naur --no-dereference a/include/hw/pci/pci.h b/include/hw/pci/pci.h
+--- a/include/hw/pci/pci.h	2023-07-04 11:03:21.671219333 +0000
++++ b/include/hw/pci/pci.h	2023-07-20 16:39:20.332693304 +0000
+@@ -72,19 +72,19 @@
  #define PCI_DEVICE_ID_INTEL_82801IR      0x2922
  
  /* Red Hat / Qumranet (for QEMU) -- see pci-ids.txt */
@@ -1014,7 +985,25 @@ diff -ura qemu.orig/include/hw/pci/pci.h qemu/include/hw/pci/pci.h
 +#define PCI_SUBDEVICE_ID_QEMU            0x8086
  
  /* legacy virtio-pci devices */
- #define PCI_DEVICE_ID_VIRTIO_NET         0x1000
+-#define PCI_DEVICE_ID_VIRTIO_NET         0x1000
+-#define PCI_DEVICE_ID_VIRTIO_BLOCK       0x1001
+-#define PCI_DEVICE_ID_VIRTIO_BALLOON     0x1002
+-#define PCI_DEVICE_ID_VIRTIO_CONSOLE     0x1003
+-#define PCI_DEVICE_ID_VIRTIO_SCSI        0x1004
+-#define PCI_DEVICE_ID_VIRTIO_RNG         0x1005
+-#define PCI_DEVICE_ID_VIRTIO_9P          0x1009
+-#define PCI_DEVICE_ID_VIRTIO_VSOCK       0x1012
++#define PCI_DEVICE_ID_VIRTIO_NET         0x8086
++#define PCI_DEVICE_ID_VIRTIO_BLOCK       0x8086
++#define PCI_DEVICE_ID_VIRTIO_BALLOON     0x8086
++#define PCI_DEVICE_ID_VIRTIO_CONSOLE     0x8086
++#define PCI_DEVICE_ID_VIRTIO_SCSI        0x8086
++#define PCI_DEVICE_ID_VIRTIO_RNG         0x8086
++#define PCI_DEVICE_ID_VIRTIO_9P          0x8086
++#define PCI_DEVICE_ID_VIRTIO_VSOCK       0x8086
+ 
+ /*
+  * modern virtio-pci devices get their id assigned automatically,
 @@ -95,7 +95,7 @@
   */
  #define PCI_DEVICE_ID_VIRTIO_10_BASE     0x1040
@@ -1024,9 +1013,9 @@ diff -ura qemu.orig/include/hw/pci/pci.h qemu/include/hw/pci/pci.h
  #define PCI_DEVICE_ID_REDHAT_BRIDGE      0x0001
  #define PCI_DEVICE_ID_REDHAT_SERIAL      0x0002
  #define PCI_DEVICE_ID_REDHAT_SERIAL2     0x0003
-diff -ura qemu.orig/include/standard-headers/linux/qemu_fw_cfg.h qemu/include/standard-headers/linux/qemu_fw_cfg.h
---- qemu.orig/include/standard-headers/linux/qemu_fw_cfg.h	2023-04-04 12:57:13.296523628 +0800
-+++ qemu/include/standard-headers/linux/qemu_fw_cfg.h	2023-04-04 12:57:55.548677387 +0800
+diff -Naur --no-dereference a/include/standard-headers/linux/qemu_fw_cfg.h b/include/standard-headers/linux/qemu_fw_cfg.h
+--- a/include/standard-headers/linux/qemu_fw_cfg.h	2023-07-04 11:03:21.691219348 +0000
++++ b/include/standard-headers/linux/qemu_fw_cfg.h	2023-07-04 11:39:20.305679934 +0000
 @@ -4,7 +4,7 @@
  
  #include "standard-headers/linux/types.h"
@@ -1045,10 +1034,10 @@ diff -ura qemu.orig/include/standard-headers/linux/qemu_fw_cfg.h qemu/include/st
  
  /* Control as first field allows for different structures selected by this
   * field, which might be useful in the future
-diff -ura qemu.orig/migration/migration.c qemu/migration/migration.c
---- qemu.orig/migration/migration.c	2023-04-04 12:57:13.636524865 +0800
-+++ qemu/migration/migration.c	2023-04-04 12:57:55.544677372 +0800
-@@ -1235,7 +1235,7 @@
+diff -Naur --no-dereference a/migration/migration.c b/migration/migration.c
+--- a/migration/migration.c	2023-07-04 11:21:46.000000000 +0000
++++ b/migration/migration.c	2023-07-04 11:39:20.305679934 +0000
+@@ -1323,7 +1323,7 @@
  
  #ifndef CONFIG_LIVE_BLOCK_MIGRATION
      if (cap_list[MIGRATION_CAPABILITY_BLOCK]) {
@@ -1057,7 +1046,7 @@ diff -ura qemu.orig/migration/migration.c qemu/migration/migration.c
                     "block migration");
          error_append_hint(errp, "Use drive_mirror+NBD instead.\n");
          return false;
-@@ -1244,7 +1244,7 @@
+@@ -1332,7 +1332,7 @@
  
  #ifndef CONFIG_REPLICATION
      if (cap_list[MIGRATION_CAPABILITY_X_COLO]) {
@@ -1066,10 +1055,9 @@ diff -ura qemu.orig/migration/migration.c qemu/migration/migration.c
                     " can't enable COLO");
          error_append_hint(errp, "Please enable replication before COLO.\n");
          return false;
-Only in qemu/migration: migration.c.orig
-diff -ura qemu.orig/migration/rdma.c qemu/migration/rdma.c
---- qemu.orig/migration/rdma.c	2023-04-04 12:57:13.636524865 +0800
-+++ qemu/migration/rdma.c	2023-04-04 12:57:55.548677387 +0800
+diff -Naur --no-dereference a/migration/rdma.c b/migration/rdma.c
+--- a/migration/rdma.c	2023-07-04 11:03:21.715219366 +0000
++++ b/migration/rdma.c	2023-07-04 11:39:20.305679934 +0000
 @@ -247,7 +247,7 @@
          [RDMA_CONTROL_NONE] = "NONE",
          [RDMA_CONTROL_ERROR] = "ERROR",
@@ -1079,9 +1067,9 @@ diff -ura qemu.orig/migration/rdma.c qemu/migration/rdma.c
          [RDMA_CONTROL_RAM_BLOCKS_REQUEST] = "RAM BLOCKS REQUEST",
          [RDMA_CONTROL_RAM_BLOCKS_RESULT] = "RAM BLOCKS RESULT",
          [RDMA_CONTROL_COMPRESS] = "COMPRESS",
-diff -ura qemu.orig/pc-bios/optionrom/optionrom.h qemu/pc-bios/optionrom/optionrom.h
---- qemu.orig/pc-bios/optionrom/optionrom.h	2023-04-04 12:57:13.664524967 +0800
-+++ qemu/pc-bios/optionrom/optionrom.h	2023-04-04 12:57:55.548677387 +0800
+diff -Naur --no-dereference a/pc-bios/optionrom/optionrom.h b/pc-bios/optionrom/optionrom.h
+--- a/pc-bios/optionrom/optionrom.h	2023-07-04 11:03:21.747219389 +0000
++++ b/pc-bios/optionrom/optionrom.h	2023-07-04 11:39:20.305679934 +0000
 @@ -43,7 +43,7 @@
  #define FW_CFG_DMA_CTL_SELECT  0x08
  #define FW_CFG_DMA_CTL_WRITE   0x10
@@ -1091,9 +1079,9 @@ diff -ura qemu.orig/pc-bios/optionrom/optionrom.h qemu/pc-bios/optionrom/optionr
  
  #define BIOS_CFG_DMA_ADDR_HIGH  0x514
  #define BIOS_CFG_DMA_ADDR_LOW   0x518
-diff -ura qemu.orig/pc-bios/s390-ccw/virtio-scsi.h qemu/pc-bios/s390-ccw/virtio-scsi.h
---- qemu.orig/pc-bios/s390-ccw/virtio-scsi.h	2023-04-04 12:57:13.668524982 +0800
-+++ qemu/pc-bios/s390-ccw/virtio-scsi.h	2023-04-04 12:57:55.548677387 +0800
+diff -Naur --no-dereference a/pc-bios/s390-ccw/virtio-scsi.h b/pc-bios/s390-ccw/virtio-scsi.h
+--- a/pc-bios/s390-ccw/virtio-scsi.h	2023-07-04 11:03:21.751219393 +0000
++++ b/pc-bios/s390-ccw/virtio-scsi.h	2023-07-04 11:39:20.305679934 +0000
 @@ -25,7 +25,7 @@
  #define VIRTIO_SCSI_S_OK                     0x00
  #define VIRTIO_SCSI_S_BAD_TARGET             0x03
@@ -1103,9 +1091,9 @@ diff -ura qemu.orig/pc-bios/s390-ccw/virtio-scsi.h qemu/pc-bios/s390-ccw/virtio-
  
  enum virtio_scsi_vq_id {
      VR_CONTROL  = 0,
-diff -ura qemu.orig/roms/seabios/src/fw/ssdt-misc.dsl qemu/roms/seabios/src/fw/ssdt-misc.dsl
---- qemu.orig/roms/seabios/src/fw/ssdt-misc.dsl	2023-04-04 12:57:16.560535506 +0800
-+++ qemu/roms/seabios/src/fw/ssdt-misc.dsl	2023-04-04 13:01:08.505379573 +0800
+diff -Naur --no-dereference a/roms/seabios/src/fw/ssdt-misc.dsl b/roms/seabios/src/fw/ssdt-misc.dsl
+--- a/roms/seabios/src/fw/ssdt-misc.dsl	2023-07-04 11:06:28.314507141 +0000
++++ b/roms/seabios/src/fw/ssdt-misc.dsl	2023-07-04 11:39:20.305679934 +0000
 @@ -61,7 +61,7 @@
  
      Scope(\_SB.PCI0.ISA) {
@@ -1115,9 +1103,9 @@ diff -ura qemu.orig/roms/seabios/src/fw/ssdt-misc.dsl qemu/roms/seabios/src/fw/s
              /* PEST will be patched to be Zero if no such device */
              ACPI_EXTRACT_NAME_WORD_CONST ssdt_isa_pest
              Name(PEST, 0xFFFF)
-diff -ura qemu.orig/roms/seabios-hppa/src/fw/ssdt-misc.dsl qemu/roms/seabios-hppa/src/fw/ssdt-misc.dsl
---- qemu.orig/roms/seabios-hppa/src/fw/ssdt-misc.dsl	2023-04-04 12:57:16.580535579 +0800
-+++ qemu/roms/seabios-hppa/src/fw/ssdt-misc.dsl	2023-04-04 13:01:32.745467780 +0800
+diff -Naur --no-dereference a/roms/seabios-hppa/src/fw/ssdt-misc.dsl b/roms/seabios-hppa/src/fw/ssdt-misc.dsl
+--- a/roms/seabios-hppa/src/fw/ssdt-misc.dsl	2023-07-04 11:06:28.514506360 +0000
++++ b/roms/seabios-hppa/src/fw/ssdt-misc.dsl	2023-07-04 11:39:20.305679934 +0000
 @@ -61,7 +61,7 @@
  
      Scope(\_SB.PCI0.ISA) {
@@ -1127,22 +1115,22 @@ diff -ura qemu.orig/roms/seabios-hppa/src/fw/ssdt-misc.dsl qemu/roms/seabios-hpp
              /* PEST will be patched to be Zero if no such device */
              ACPI_EXTRACT_NAME_WORD_CONST ssdt_isa_pest
              Name(PEST, 0xFFFF)
-diff -ura qemu.orig/target/i386/kvm/kvm.c qemu/target/i386/kvm/kvm.c
---- qemu.orig/target/i386/kvm/kvm.c	2023-04-04 12:57:18.304541853 +0800
-+++ qemu/target/i386/kvm/kvm.c	2023-04-04 12:57:55.548677387 +0800
-@@ -1800,7 +1800,7 @@
-     }
- 
-     if (cpu->expose_kvm) {
+diff -Naur --no-dereference a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+--- a/target/i386/kvm/kvm.c	2023-07-04 11:03:21.815219440 +0000
++++ b/target/i386/kvm/kvm.c	2023-07-04 11:39:37.561677444 +0000
+@@ -1897,7 +1897,7 @@
+         abort();
+ #endif
+     } else if (cpu->expose_kvm) {
 -        memcpy(signature, "KVMKVMKVM\0\0\0", 12);
 +        memcpy(signature, "GenuineIntel", 12);
          c = &cpuid_data.entries[cpuid_i++];
          c->function = KVM_CPUID_SIGNATURE | kvm_base;
          c->eax = KVM_CPUID_FEATURES | kvm_base;
-diff -ura qemu.orig/target/s390x/tcg/misc_helper.c qemu/target/s390x/tcg/misc_helper.c
---- qemu.orig/target/s390x/tcg/misc_helper.c	2023-04-04 12:57:18.308541868 +0800
-+++ qemu/target/s390x/tcg/misc_helper.c	2023-04-04 12:57:55.548677387 +0800
-@@ -334,13 +334,13 @@
+diff -Naur --no-dereference a/target/s390x/tcg/misc_helper.c b/target/s390x/tcg/misc_helper.c
+--- a/target/s390x/tcg/misc_helper.c	2023-07-04 11:03:21.847219463 +0000
++++ b/target/s390x/tcg/misc_helper.c	2023-07-04 11:39:20.305679934 +0000
+@@ -333,13 +333,13 @@
              snprintf(type, ARRAY_SIZE(type), "%X", cpu->model->def->type);
              ebcdic_put(sysib.sysib_111.type, type, 4);
              /* model number (not stored in STORE CPU ID for z/Architecture) */
@@ -1161,7 +1149,7 @@ diff -ura qemu.orig/target/s390x/tcg/misc_helper.c qemu/target/s390x/tcg/misc_he
              sysib.sysib_121.cpu_addr = cpu_to_be16(env->core_id);
          } else if ((sel1 == 2) && (sel2 == 2)) {
              /* Basic Machine CPUs */
-@@ -355,8 +355,8 @@
+@@ -354,8 +354,8 @@
      case STSI_R0_FC_LEVEL_2:
          if ((sel1 == 2) && (sel2 == 1)) {
              /* LPAR CPU */
@@ -1172,7 +1160,7 @@ diff -ura qemu.orig/target/s390x/tcg/misc_helper.c qemu/target/s390x/tcg/misc_he
              sysib.sysib_221.cpu_addr = cpu_to_be16(env->core_id);
          } else if ((sel1 == 2) && (sel2 == 2)) {
              /* LPAR CPUs */
-@@ -364,7 +364,7 @@
+@@ -363,7 +363,7 @@
              sysib.sysib_222.total_cpus = cpu_to_be16(total_cpus);
              sysib.sysib_222.conf_cpus = cpu_to_be16(conf_cpus);
              sysib.sysib_222.reserved_cpus = cpu_to_be16(reserved_cpus);
@@ -1181,7 +1169,7 @@ diff -ura qemu.orig/target/s390x/tcg/misc_helper.c qemu/target/s390x/tcg/misc_he
              sysib.sysib_222.caf = cpu_to_be32(1000);
              sysib.sysib_222.dedicated_cpus = cpu_to_be16(conf_cpus);
          } else {
-@@ -380,7 +380,7 @@
+@@ -379,7 +379,7 @@
              sysib.sysib_322.vm[0].reserved_cpus = cpu_to_be16(reserved_cpus);
              sysib.sysib_322.vm[0].caf = cpu_to_be32(1000);
              /* Linux kernel uses this to distinguish us from z/VM */
@@ -1190,16 +1178,3 @@ diff -ura qemu.orig/target/s390x/tcg/misc_helper.c qemu/target/s390x/tcg/misc_he
              sysib.sysib_322.vm[0].ext_name_encoding = 2; /* UTF-8 */
  
              /* If our VM has a name, use the real name */
-diff -ura qemu.orig/ui/spice-core.c qemu/ui/spice-core.c
---- qemu.orig/ui/spice-core.c	2023-04-04 12:57:18.408542232 +0800
-+++ qemu/ui/spice-core.c	2023-04-04 12:57:55.548677387 +0800
-@@ -807,7 +807,7 @@
- 
-     qemu_opt_foreach(opts, add_channel, &tls_port, &error_fatal);
- 
--    spice_server_set_name(spice_server, qemu_name ?: "QEMU " QEMU_VERSION);
-+    spice_server_set_name(spice_server, qemu_name ?: "ASUS " QEMU_VERSION);
-     spice_server_set_uuid(spice_server, (unsigned char *)&qemu_uuid);
- 
-     seamless_migration = qemu_opt_get_bool(opts, "seamless-migration", 0);
-Only in qemu/ui: spice-core.c.orig
